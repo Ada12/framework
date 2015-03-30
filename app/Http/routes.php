@@ -17,6 +17,8 @@ Route::get('test','WelcomeController@test');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('yangchen','WelcomeController@yctest');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
