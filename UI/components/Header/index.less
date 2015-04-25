@@ -1,0 +1,28 @@
+@import '~base/mixins';
+
+.header {
+  @mod-height: 6rem;
+  
+  .iu-box-shadow();
+  background-color: #fff;
+  height: @mod-height;
+  line-height: @mod-height;
+  vertical-align: middle;
+  
+  &-logo {
+    font-size: 2rem;
+    text-decoration: none;
+  }
+
+  &-submod-wrap {
+    height: @mod-height;
+    line-height: @mod-height;
+  }
+
+  &-button {
+    .iu-button();
+    text-decoration: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

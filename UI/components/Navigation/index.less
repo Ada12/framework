@@ -1,0 +1,38 @@
+@import '~base/mixins';
+
+.navigation {
+  font-size: 1.6rem;
+  &:extend(.clearfix all);
+
+  &-leftnav, &-rightnav {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    &:extend(.clearfix all);
+  }
+
+  &-leftnav {
+    float: left;
+  }
+
+  &-rightnav {
+    float: right;
+  }
+
+  &-item {
+    float: left;
+  }
+
+  &-link {
+    display: inline-block;
+    padding: 0 1.4rem;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    .iu-link();
+
+    &:hover {
+      background-color: mix(@iu-brand-primary, white, 10%);
+    }
+  }
+}
