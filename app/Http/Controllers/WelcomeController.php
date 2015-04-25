@@ -37,10 +37,4 @@ class WelcomeController extends Controller {
 	{
 		return view('test/a');
 	}
-
-    public  function  yctest()
-    {
-        return view('test/yangchen');
-
-    }
 }

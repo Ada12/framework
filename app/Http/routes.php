@@ -17,7 +17,7 @@ Route::get('test','WelcomeController@test');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('yangchen','WelcomeController@yctest');
+Route::resource('question.comment','CommentController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
