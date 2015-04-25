@@ -15,4 +15,10 @@ sudo: false
 
 install: travis_retry composer install --no-interaction --prefer-source
 
+before_script:
+  - mv config/database.test.php config/database.php
+  - mysql -e 'create database IF NOT EXISTS inter;'
+  - php artisan migrate --no-interaction --env=test
+  - php artisan db:seed --no-interaction --env=test
+
 script: vendor/bin/phpunit

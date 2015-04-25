@@ -1,0 +1,75 @@
+@import "./variables";
+@import "~bootstrap/less/mixins";
+@import "~lesshat/build/lesshat-prefixed";
+
+
+/**
+ * Less mixins
+ *
+ * prefix: iu-
+ */
+
+
+body {
+  font-family: "SimHei", Helvetica, arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+a {
+  color: #5693cf;
+  text-decoration: none;
+}
+  /*States*/
+  a:hover {
+    color: #f39c12;
+    text-decoration: none;
+  }
+
+/**
+ * 常用卡片的阴影（鼠标悬停不可取消）
+ */
+.iu-box-shadow() {
+  .lh-box-shadow(0 1px 2px @iu-shadow-color);
+}
+
+/**
+ * 常用卡片的阴影（鼠标悬停可取消）
+ */
+.iu-box-shadow-interactive() {
+  .iu-box-shadow();
+  &:hover {
+    .lh-box-shadow(none);
+  }
+}
+
+/**
+ * 链接的通用样式
+ */
+.iu-link() {
+  color: @iu-link-color;
+  text-decoration: none;
+  &:hover {
+    color: darken(@iu-link-color, 30%);
+    text-decoration: none;
+  }
+}
+
+/**
+ * 按钮的通用样式
+ */
+.iu-button() {
+  display: inline-block;
+  line-height: normal;
+  padding: .9rem .9rem;
+  font-size: 1.6rem;
+  color: white;
+  border-radius: 1px;
+  .iu-box-shadow(); 
+  background-color: @iu-link-color;
+  text-align: center;
+  &:hover {
+    .lh-box-shadow(none);
+    // color: @in-link-hover-color;
+  }
+}
+

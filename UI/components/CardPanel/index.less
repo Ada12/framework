@@ -1,0 +1,36 @@
+@import '~base/mixins';
+
+.card-panel {
+	margin-bottom: 2rem;
+  	background-color: #fff;
+  	border: 1px solid transparent;
+  	color: #b5c2d0;
+  	font-size: 1.6rem;
+  	padding: 1.5rem;
+  	.iu-box-shadow-interactive();
+  	&-head {
+  		padding-top: 0.2rem;
+  	}
+	&-body {
+		padding: 0.8rem;
+	}
+
+	&-companyname {
+		.iu-link();
+		color: #b5c2d0;
+	}
+
+	&-recorded {
+		float: right;
+	}
+
+	&-content-p {
+		margin: 1.2rem 0;
+		font-size: 1.7rem;
+		color: #000;
+	}
+
+	&-num-asked {
+		margin-left: 2rem;
+	}
+}
