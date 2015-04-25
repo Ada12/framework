@@ -9,20 +9,17 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
-| Controller Routing Documentation: http://laravel.com/docs/5.0/controllers#restful-resource-controllers
-| Routing Documentation: http://laravel.com/docs/5.0/routing
 */
 
+Route::get('/', 'WelcomeController@index');
 
+Route::get('test','WelcomeController@test');
 
-Route::pattern('id', '[0-9]+');
+Route::get('home', 'HomeController@index');
 
-Route::get('/', ['uses' => 'WelcomeController@index']);
+Route::get('yangchen','WelcomeController@yctest');
 
-Route::resource('session', 'SessionController',
-                ['only' => ['store', 'destroy']]);
-Route::resource('users', 'UserController',
-                ['only' => ['store']]);
-Route::get('users/sign-in', ['uses' => 'UserController@signIn']);
-
-Route::resource('question.comment','CommentController');
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
