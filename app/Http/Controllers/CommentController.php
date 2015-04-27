@@ -14,10 +14,10 @@ class CommentController extends Controller{
         $content = \Request::input('content');
         $userId = \Request::input('user_id');
         if(!$content){
-            return $this->reportJsonError("评论内容不能为空");
+            return $this->reportJSONError("评论内容不能为空");
         }
         if(!$userId){
-            return $this->reportJsonError("用户名不能为空");
+            return $this->reportJSONError("用户名不能为空");
         }
         try{
             $question = Question::findOrFail($questionId);
