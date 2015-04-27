@@ -31,4 +31,4 @@ Route::resource('users', 'UserController',
 
 Route::resource('questions', 'QuestionController',
                 ['only' => ['store']]);
-Route::resource('question.comment','CommentController');
+Route::resource('question.comments','CommentController');

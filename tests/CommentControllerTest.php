@@ -5,19 +5,22 @@
  * Date: 2015/4/24
  * Time: 22:23
  */
+use App\User;
+use App\Question;
 class CommentControllerTest extends TestCase
 {
     public function testStore()
     {
         Session::start();
-        $response = $this->call('POST', '/question/1/comment',[
-            'content' => '第一个评论',
-            'user_id' => '1',
+        $users = User::all();
+        $response = $this->call('POST', '/question/1/comments',[
+            'content' => '评论测试',
+            'user_id' => $users[0]->id,
             '_token' => csrf_token(),
         ]);
         $body = json_decode($response->getContent(), true);
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('第一个评论', $body['content']);
-        $this->assertEquals('1', $body['user_id']);
+        $this->assertEquals('评论测试', $body['content']);
+        $this->assertEquals($users[0]->id, $body['user_id']);
     }
 }
