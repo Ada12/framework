@@ -8,16 +8,17 @@
 use App\Comment;
 use App\Question;
 use App\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 class CommentController extends Controller{
 
     public function store($questionId){
         $content = \Request::input('content');
-        $userId = \Request::input('user_id');
+        $user = \Session::get('user');
         if(!$content){
             return $this->reportJSONError("评论内容不能为空");
         }
-        if(!$userId){
-            return $this->reportJSONError("用户名不能为空");
+        if(!$user){
+            return $this->reportJSONError("用户不能为空");
         }
         try{
             $question = Question::findOrFail($questionId);
@@ -25,13 +26,13 @@ class CommentController extends Controller{
             return $this->reportJSONError("问题不存在");
         }
         try{
-            $user = User::findOrFail($userId);
+            $user = User::findOrFail($user->id);
         }catch (ModelNotFoundException $e){
             return $this->reportJSONError("用户不存在");
         }
         $comments = new Comment();
         $comments->content = $content;
-        $comments->user_id = $userId;
+        $comments->user_id = $user->id;
         $comments->question_id = $questionId;
         $comments->save();
         return $comments->toJson();

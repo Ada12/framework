@@ -12,15 +12,13 @@ class CommentControllerTest extends TestCase
     public function testStore()
     {
         Session::start();
-        $users = User::all();
+        Session::set('user',$user = User::all()->first());
         $response = $this->call('POST', '/question/1/comments',[
             'content' => '评论测试',
-            'user_id' => $users[0]->id,
             '_token' => csrf_token(),
         ]);
         $body = json_decode($response->getContent(), true);
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('评论测试', $body['content']);
-        $this->assertEquals($users[0]->id, $body['user_id']);
     }
 }
